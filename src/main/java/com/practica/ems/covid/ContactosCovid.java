@@ -20,6 +20,8 @@ import com.practica.genericas.Persona;
 import com.practica.genericas.PosicionPersona;
 import com.practica.lista.ListaContactos;
 
+import static com.practica.ems.covid.Localizacion.getFechaHora;
+
 public class ContactosCovid {
     private Poblacion poblacion;
     private Localizacion localizacion;
@@ -244,24 +246,10 @@ public class ContactosCovid {
     }
 
     private FechaHora parsearFecha(String fecha) {
-        int dia, mes, anio;
-        String[] valores = fecha.split("/");
-        dia = Integer.parseInt(valores[0]);
-        mes = Integer.parseInt(valores[1]);
-        anio = Integer.parseInt(valores[2]);
-        return new FechaHora(dia, mes, anio, 0, 0);
+        return getFechaHora(fecha);
     }
 
     private FechaHora parsearFecha(String fecha, String hora) {
-        int dia, mes, anio;
-        String[] valores = fecha.split("/");
-        dia = Integer.parseInt(valores[0]);
-        mes = Integer.parseInt(valores[1]);
-        anio = Integer.parseInt(valores[2]);
-        int minuto, segundo;
-        valores = hora.split(":");
-        minuto = Integer.parseInt(valores[0]);
-        segundo = Integer.parseInt(valores[1]);
-        return new FechaHora(dia, mes, anio, minuto, segundo);
+        return getFechaHora(fecha, hora);
     }
 }
